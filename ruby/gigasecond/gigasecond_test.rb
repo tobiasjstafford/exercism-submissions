@@ -38,6 +38,15 @@ class GigasecondTest < Minitest::Test
     assert_equal Time.utc(2016, 12, 9, 5, 46, 40), result
   end
 
+  def test_something_in_the_future
+    next_year = Time.now.utc.year + 1
+    from = Time.utc(next_year, 4, 20, 8, 30, 0)
+    expected = from + 10**9
+
+    result = Gigasecond.from(from)
+    assert_equal expected, result
+  end
+
   # Problems in exercism evolve over time, as we find better ways to ask
   # questions.
   # The version number refers to the version of the problem you solved,

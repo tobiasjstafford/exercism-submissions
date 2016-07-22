@@ -6,8 +6,6 @@ class Gigasecond
   GIGASECONDS = 10**9
 
   def self.from(time)
-    method = time > Time.now.utc ? '-' : '+'
-
-    time.send(method, GIGASECONDS)
+    Time.at(time + GIGASECONDS)
   end
 end
